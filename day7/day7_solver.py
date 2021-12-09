@@ -1,19 +1,24 @@
+import timeit
 import statistics
 
 test_data = """16,1,2,0,4,2,7,1,2,14"""
 
 def main():
-  part1()
-  part2()
+  t1  = timeit.timeit('part1()', number=1, globals = globals())
+  t2 = timeit.timeit('part2()', number=1, globals = globals())
+  print('part 1 took ' + str(t1) + ' seconds')
+  print('part 2 took ' + str(t2) + ' seconds')
 
 def part1():
   print('Part 1')
   data = read_file('input')
+  print('mean: ' + str(statistics.median(data)))
   print('position, fuel_cost: ' + str(determine_crabrizon(data, original_crab_cost_func)))
 
 def part2():
   print('Part 2')
   data = read_file('input')
+  print('median: ' + str(statistics.mean(data)))
   print('position, fuel_cost: ' + str(determine_crabrizon(data, new_crab_cost_function)))
 
 def read_file(filename):
